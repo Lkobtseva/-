@@ -128,7 +128,7 @@
 }
 .gallery {
   display: flex;
-  overflow-x: auto;
+  overflow-x: scroll;
   white-space: nowrap;
   margin-bottom: 40px;
   margin-left: 77px;
