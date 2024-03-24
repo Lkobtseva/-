@@ -1,0 +1,142 @@
+.survival-school-form {
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 600px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    z-index: 2;
+    position: relative;
+}
+.p{
+    font-size: 32px;
+    text-align: center;
+
+}
+.Form{
+    padding-left: 20px;
+    padding-right: 20px;
+    color:#fff;
+    height: 100vh;
+    background-color: transparent;
+    font-family: "Gropled";
+}
+.survival-school-form div {
+    margin-bottom: 20px;
+}
+
+.survival-school-form label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.survival-school-form input[type="text"],
+.survival-school-form input,
+.survival-school-form input[type="number"] {
+    width: 96.8%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: "Gropled";
+}
+
+.survival-school-form button {
+    padding: 10px 20px;
+    font-size: 20px;
+    background-color: transparent;
+    color: #fff;
+    border: 1px solid;
+    border-radius: 20px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    font-family: "Gropled";
+}
+
+.survival-school-form button:hover {
+    background-color: #1e321e;
+}
+
+@media screen and (max-width: 660px) {
+    .survival-school-form {
+        max-width: 500px;
+
+    }
+
+    .survival-school-form input[type="text"],
+    .survival-school-form input,
+    .survival-school-form input[type="number"] {
+        width: 95.7%;
+    }
+}
+
+@media screen and (max-width: 560px) {
+    .survival-school-form {
+        max-width: 400px;
+
+    }
+.p{
+    font-size: 24px;
+}
+    .survival-school-form input[type="text"],
+    .survival-school-form input,
+    .survival-school-form input[type="number"] {
+        width: 94.9%;
+    }
+}
+
+@media screen and (max-width: 460px) {
+    .survival-school-form {
+        max-width: 300px;
+
+    }
+
+    .survival-school-form input[type="text"],
+    .survival-school-form input,
+    .survival-school-form input[type="number"] {
+        width: 93.9%;
+    }
+.p{
+    font-size: 20px;
+}
+    label {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .survival-school-form {
+        max-width: 270px;
+        padding: 13px
+    }
+
+    .survival-school-form input[type="text"],
+    .survival-school-form input,
+    .survival-school-form input[type="number"] {
+        width: 92.5%;
+    }
+
+    label {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .survival-school-form {
+        max-width: 250px;
+        padding: 13px
+    }
+
+    .survival-school-form input[type="text"],
+    .survival-school-form input,
+    .survival-school-form input[type="number"] {
+        width: 91.5%;
+    }
+
+    label {
+        font-size: 12px;
+    }
+}
