@@ -74,6 +74,9 @@
 .next-button:hover {
   background-color: #283825;
 }
+.next-button:checked{
+    background-color: #283825;
+}
 
 .passport-inputs {
   display: flex;

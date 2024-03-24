@@ -257,6 +257,7 @@ const Questions = ({ goForm, handleSelectQuestions }) => {
             <input
               type="text"
               name="phone_number"
+              placeholder="+7.........."
               value={answers.phone_number}
               onChange={handleAnswerChange}
               className={`question-input ${

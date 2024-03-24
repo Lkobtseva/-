@@ -129,7 +129,7 @@ const MainPage = ({ goQuestions }) => {
           <button onClick={goQuestions} className="button">
             подать анкету
           </button>
-          <p className="footer__p">© ШКОЛА ВЫЖИВАНИЯ 2022</p>
+          <p className="footer__p">© ШКОЛА ВЫЖИВАНИЯ 2024</p>
         </footer>
       </div>
     </>
