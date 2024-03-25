@@ -34,11 +34,12 @@
     margin-bottom: 5px;
 }
 
-.survival-school-form input[type="text"],
+.survival-school-form textarea[type="text"],
+.survival-school-form textarea,
 .survival-school-form input,
-.survival-school-form input[type="number"] {
+.survival-school-form textarea[type="number"] {
     width: 96.8%;
-    padding: 10px;
+    padding: 6px;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-family: "Gropled";
@@ -66,9 +67,10 @@
 
     }
 
-    .survival-school-form input[type="text"],
+    .survival-school-form textarea[type="text"],
+    .survival-school-form textarea,
     .survival-school-form input,
-    .survival-school-form input[type="number"] {
+    .survival-school-form textarea[type="number"] {
         width: 95.7%;
     }
 }
@@ -81,9 +83,10 @@
 .p{
     font-size: 24px;
 }
-    .survival-school-form input[type="text"],
+    .survival-school-form textarea[type="text"],
+    .survival-school-form textarea,
     .survival-school-form input,
-    .survival-school-form input[type="number"] {
+    .survival-school-form textarea[type="number"] {
         width: 94.9%;
     }
 }
@@ -94,9 +97,10 @@
 
     }
 
-    .survival-school-form input[type="text"],
+    .survival-school-form textarea[type="text"],
+    .survival-school-form textarea,
     .survival-school-form input,
-    .survival-school-form input[type="number"] {
+    .survival-school-form textarea[type="number"] {
         width: 93.9%;
     }
 .p{
@@ -113,9 +117,10 @@
         padding: 13px
     }
 
-    .survival-school-form input[type="text"],
+    .survival-school-form textarea[type="text"],
+    .survival-school-form textarea,
     .survival-school-form input,
-    .survival-school-form input[type="number"] {
+    .survival-school-form textarea[type="number"] {
         width: 92.5%;
     }
 
@@ -130,9 +135,10 @@
         padding: 13px
     }
 
-    .survival-school-form input[type="text"],
+    .survival-school-form textarea[type="text"],
+    .survival-school-form textarea,
     .survival-school-form input,
-    .survival-school-form input[type="number"] {
+    .survival-school-form textarea[type="number"] {
         width: 91.5%;
     }
 

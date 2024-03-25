@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import back from "../../images/back.svg";
 const Questions = ({ goForm, handleSelectQuestions }) => {
   const [answers, setAnswers] = useState({
@@ -16,9 +16,15 @@ const Questions = ({ goForm, handleSelectQuestions }) => {
   const [errors, setErrors] = useState({});
   const passportNumberRef = useRef(null);
 
+  useEffect(() => {
+    const storedAnswers = localStorage.getItem("answers");
+    if (storedAnswers) {
+      setAnswers(JSON.parse(storedAnswers));
+    }
+  }, []);
+
   const handlePhotoChange = (event) => {
     const file = event.target.files[0];
-    console.log("Выбран файл:", file);
     setAnswers((prevState) => ({
       ...prevState,
       icon: file,
@@ -87,7 +93,7 @@ const Questions = ({ goForm, handleSelectQuestions }) => {
     } else {
       if (
         answers.passport_series.trim().length !== 4 ||
-        answers.passport_series.trim().length !== 6
+        answers.passport_number.trim().length !== 6
       ) {
         errors.passport = "Проверьте паспортные данные";
       }

@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from "react";
 import back from "../../images/back.svg";
+import { useNavigate } from "react-router-dom";
 
 const Form = ({ handleSelectForm, sendDataToBackend }) => {
   const [submited, setSubmited] = useState(false);
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
-  const [answers, setAnswers] = useState({
+  const [answersForm, setAnswersForm] = useState({
     reasons: "",
     expectations: "",
     team_experience: "",
     teamwork: "",
-    physical_training: "",
+    physical_training: "1",
     health_problems: "",
     hike_experience: "",
     priorities: "",
@@ -21,24 +23,42 @@ const Form = ({ handleSelectForm, sendDataToBackend }) => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setAnswers((prevState) => ({
+    setAnswersForm((prevState) => ({
       ...prevState,
       [name]: value,
     }));
   };
+  useEffect(() => {
+    const storedAnswers = localStorage.getItem("answersForm");
+    if (storedAnswers) {
+      setAnswersForm(JSON.parse(storedAnswers));
+    }
+  }, []);
+
+  const handleBack = () => {
+    navigate("/questions");
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleSelectForm(answers);
-    setSubmited(true);
+    const emptyFields = Object.keys(answersForm).filter(
+      (key) => answersForm[key].trim() === ""
+    );
+    if (emptyFields.length > 0) {
+      setError("Заполнте все поля");
+    } else {
+      handleSelectForm(answersForm);
+      setSubmited(true);
+      setError("");
+    }
   };
-  
+
   useEffect(() => {
     if (submited) {
-      sendDataToBackend(answers);
+      sendDataToBackend(answersForm);
       setSubmited(false);
     }
-  }, [answers, sendDataToBackend]);
+  }, [answersForm, sendDataToBackend]);
 
   return (
     <div className="Form">
@@ -60,12 +80,13 @@ const Form = ({ handleSelectForm, sendDataToBackend }) => {
           <label htmlFor="reasons">
             1. Назови причину, почему ты решил подать анкету на Школу Выживания?
           </label>
-          <input
-            type="text"
+          <textarea
             id="reasons"
             name="reasons"
-            value={answers.reasons}
+            value={answersForm.reasons}
             onChange={handleChange}
+            rows={4}
+            style={{ resize: "none" }}
           />
         </div>
         <div>
@@ -73,34 +94,39 @@ const Form = ({ handleSelectForm, sendDataToBackend }) => {
             2. Как ты представляешь себе этот проект? Какие есть ожидания от
             него?
           </label>
-          <input
+          <textarea
             id="expectations"
             name="expectations"
-            value={answers.expectations}
+            value={answersForm.expectations}
             onChange={handleChange}
-          ></input>
+            rows={4}
+            style={{ resize: "none" }}
+          />
         </div>
         <div>
           <label htmlFor="team_experience">
             3. Опиши свой опыт работы в команде
           </label>
-          <input
+          <textarea
             id="team_experience"
             name="team_experience"
-            value={answers.team_experience}
+            value={answersForm.team_experience}
             onChange={handleChange}
-          ></input>
+            rows={4}
+            style={{ resize: "none" }}
+          />
         </div>
         <div>
           <label htmlFor="teamwork">
             4. Что для тебя важно при работе в команде и что недопустимо?
           </label>
-          <input
-            type="text"
+          <textarea
             id="teamwork"
             name="teamwork"
-            value={answers.teamwork}
+            value={answersForm.teamwork}
             onChange={handleChange}
+            rows={4}
+            style={{ resize: "none" }}
           />
         </div>
         <div>
@@ -113,34 +139,37 @@ const Form = ({ handleSelectForm, sendDataToBackend }) => {
             name="physical_training"
             min="1"
             max="10"
-            value={answers.physical_training}
+            value={answersForm.physical_training}
             onChange={handleChange}
             className="slider"
           />
-          <output>{answers.physical_training}</output>
+          <output>{answersForm.physical_training}</output>
         </div>
         <div>
           <label htmlFor="health_problems">
             6. Есть ли у тебя какие-либо проблемы со здоровьем?
           </label>
-          <input
-            type="text"
+          <textarea
             id="health_problems"
             name="health_problems"
-            value={answers.health_problems}
+            value={answersForm.health_problems}
             onChange={handleChange}
+            rows={4}
+            style={{ resize: "none" }}
           />
         </div>
         <div>
           <label htmlFor="hike_experience">
             7. Есть ли у тебя походный опыт? Если да, опиши его.
           </label>
-          <input
+          <textarea
             id="hike_experience"
             name="hike_experience"
-            value={answers.hike_experience}
+            value={answersForm.hike_experience}
             onChange={handleChange}
-          ></input>
+            rows={4}
+            style={{ resize: "none" }}
+          />
         </div>
         <div>
           <label htmlFor="priorities">
@@ -148,23 +177,26 @@ const Form = ({ handleSelectForm, sendDataToBackend }) => {
             приоритетам всю свою активность (учеба, хобби, проекты, работа и т.
             д.)
           </label>
-          <input
+          <textarea
             id="priorities"
             name="priorities"
-            value={answers.priorities}
+            value={answersForm.priorities}
             onChange={handleChange}
-          ></input>
+            rows={4}
+            style={{ resize: "none" }}
+          />
         </div>
         <div>
           <label htmlFor="curation">
             9. Проходишь ли ты сейчас отбор на кураторство?
           </label>
-          <input
-            type="text"
+          <textarea
             id="curation"
             name="curation"
-            value={answers.curation}
+            value={answersForm.curation}
             onChange={handleChange}
+            rows={4}
+            style={{ resize: "none" }}
           />
         </div>
         <div>
@@ -172,29 +204,37 @@ const Form = ({ handleSelectForm, sendDataToBackend }) => {
             10. Что тебя может заставить отказаться от участия в Школе
             Выживания?
           </label>
-          <input
+          <textarea
             id="rejection"
             name="rejection"
-            value={answers.rejection}
+            value={answersForm.rejection}
             onChange={handleChange}
-          ></input>
+            rows={4}
+            style={{ resize: "none" }}
+          />
         </div>
         <div>
           <label htmlFor="organization">
             11. Если бы ты организовывал/а свою собственную Школу Выживания, что
             бы там было?
           </label>
-          <input
+          <textarea
             id="organization"
             name="organization"
-            value={answers.organization}
+            rows={4}
+            style={{ resize: "none" }}
+            value={answersForm.organization}
             onChange={handleChange}
-          ></input>
+          ></textarea>
         </div>
         <div>
-          <button onClick={handleSubmit} type="submit">
-            Отправить
-          </button>
+          {error && <p style={{ color: "red" }}>{error}</p>}
+          <div style={{ display: "flex", justifyContent: "space-between" }}>
+            <button onClick={handleBack}>Назад</button>
+            <button onClick={handleSubmit} type="submit">
+              Отправить
+            </button>
+          </div>
         </div>
       </form>
     </div>
